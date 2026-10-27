@@ -18,7 +18,6 @@
 #include "odk_internal.h"
 #include "odk_links.h"
 #include "odk_lang.h"
-#include "odk_lang.h"
 
 #include <stdarg.h>
 #include <stdio.h>
