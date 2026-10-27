@@ -12,8 +12,17 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-option(OMNIDECIDE_BUILD_EXAMPLES "Build the example programs" ${PROJECT_IS_TOP_LEVEL})
-option(OMNIDECIDE_BUILD_TESTS "Build and register the smoke test" ${PROJECT_IS_TOP_LEVEL})
+# PROJECT_IS_TOP_LEVEL is only defined by project() from CMake 3.21 on.  The
+# equivalent check below works on every CMake, so examples and tests are not
+# silently disabled on 3.10 to 3.20.
+if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+    set(ODK_IS_TOP_LEVEL ON)
+else()
+    set(ODK_IS_TOP_LEVEL OFF)
+endif()
+
+option(OMNIDECIDE_BUILD_EXAMPLES "Build the example programs" ${ODK_IS_TOP_LEVEL})
+option(OMNIDECIDE_BUILD_TESTS "Build and register the smoke test" ${ODK_IS_TOP_LEVEL})
 
 file(GLOB ODK_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c)
 
