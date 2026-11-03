@@ -61,15 +61,17 @@ extern "C" {
  *   - opt-in outcome learning: an experience brain, learned word links
  *     and persistent snapshots (schema v3; v1/v2 snapshots still load).
  *
- * The client pipeline scores a FIXED evidence stamp ("1.0.0" for the whole
- * 1.x series), so decisions do not depend on the library version. */
+ * The client pipeline scores a FIXED evidence stamp ("1.0.0", unchanged in
+ * 2.0.0 so that 1.x-era decision bytes replay bit-identically; see
+ * docs/UPGRADE-2.0.md). New v2.0.0 records (pins, observations, calibration
+ * reports) carry kernel_version "2.0.0" from ODK_LIBRARY_VERSION instead. */
 
 /* Semantic version (see README, "Versioning").  ODK_LIBRARY_VERSION must
  * equal "MAJOR.MINOR.PATCH"; `make version-check` enforces it. */
-#define ODK_VERSION_MAJOR 1
+#define ODK_VERSION_MAJOR 2
 #define ODK_VERSION_MINOR 0
 #define ODK_VERSION_PATCH 0
-#define ODK_LIBRARY_VERSION "1.0.0"
+#define ODK_LIBRARY_VERSION "2.0.0"
 
 /* Unicode version of the committed UCD tables (see THIRD_PARTY_NOTICES.md). */
 #define ODK_UNICODE_VERSION "15.1.0"
