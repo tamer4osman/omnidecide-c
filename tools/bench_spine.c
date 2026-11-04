@@ -141,6 +141,7 @@ int main(void)
            best, sum / runs, sum > 0 ? 1000.0 / (sum / runs) : 0.0);
 
     /* ---- 3. pin + replay round-trip ---- */
+    sum = 0.0;
     request_buf = malloc(8192); /* fixed-size: 2000-byte context + template */
     sprintf(request_buf,
             "{\"primitive\":\"choice\",\"instruction\":\"How should we fix "

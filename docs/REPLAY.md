@@ -64,7 +64,8 @@ or content hash), the report's `registrations_match` is `false`.
 - `decision_match` / `byte_equal` — text-level and bit-level comparison
   of the recorded vs re-derived decision.
 - `registrations_match` — the customization state equals the pinned one.
-- `rederived_*` — the re-derivation outcome (`null` for foreign pins).
+- `rederived_decision` — the re-derived decision text (`""` for foreign pins, absent from replay).
+- `rederived_confidence` — the re-derived confidence score (`null` for foreign pins).
 
 Two replays of the same pin produce byte-identical reports.
 
