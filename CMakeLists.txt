@@ -65,5 +65,5 @@ if(OMNIDECIDE_BUILD_TESTS)
 endif()
 
 install(TARGETS omnidecide ARCHIVE DESTINATION lib)
-install(FILES include/omnidecide.h include/odk_spine.h include/odk_spine_types.h
+install(FILES include/omnidecide.h include/odk_spine.h include/odk_spine_base.h include/odk_spine_types.h
         DESTINATION include)
