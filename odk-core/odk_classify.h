@@ -15,9 +15,9 @@
 #include "odk_spine_types.h"
 
 /* Tokenize text for matching: maximal runs of ASCII letters and digits,
- * case-folded (A-Z -> a-z); non-ASCII bytes never split a run but are
- * folded verbatim into tokens. The list is malloc'd; release with
- * odk_classify_tokens_free(). */
+ * case-folded (A-Z -> a-z).  Non-ASCII bytes are dropped; they never
+ * appear in tokens and never split a run.  The list is malloc'd;
+ * release with odk_classify_tokens_free(). */
 void odk_classify_tokenize(const char *text, odk_spine_str_list *tokens);
 void odk_classify_tokens_free(odk_spine_str_list *tokens);
 

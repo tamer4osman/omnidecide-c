@@ -1110,6 +1110,9 @@ int odk_brain_evaluate_choice_ex(odk_brain *brain, odk_kernel *kernel,
                 links = brain->links;
             }
         }
+        if (explain_json != NULL) {
+            *explain_json = NULL;
+        }
         if (explain_json != NULL && links != NULL) {
             if (sb_init(&explain) != 0) {
                 goto oom;

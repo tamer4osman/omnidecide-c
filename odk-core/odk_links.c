@@ -1125,7 +1125,7 @@ static double link_strength(const odk_link_store *store, size_t a,
     }
     for (i = 0; i < lb->count; i++) {
         int seen = 0;
-        for (j = 0; j < opt_count - la->count; j++) {
+        for (j = 0; j < opt_count; j++) {
             if (opt_ids[j] == lb->rows[i].option_id) {
                 seen = 1;
                 break;

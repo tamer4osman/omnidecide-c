@@ -141,7 +141,26 @@ static void canon_rewrite(const odk_spine_str_list *in, const canon_list *cl,
                           odk_spine_str_list *out)
 {
     size_t i = 0, k;
-    size_t cap = in->count + 8;
+    size_t cap = 0;
+    /* Upper bound: every input token could be the start of a phrase
+     * whose replacement is the largest canonical token count in the
+     * vocabulary, and every unmatched token copies itself.  We take
+     * the max replacement size and multiply by the input count. */
+    {
+        size_t c;
+        for (c = 0; c < cl->count; c++) {
+            if (cl->items[c].replace.count > cap) {
+                cap = cl->items[c].replace.count;
+            }
+        }
+    }
+    if (cap == 0) {
+        cap = 1;
+    }
+    cap = in->count * cap;
+    if (cap < in->count + 8) {
+        cap = in->count + 8;
+    }
 
     out->count = 0;
     out->items = NULL;
